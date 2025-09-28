@@ -5,18 +5,20 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.vectorstores import FAISS
 from langchain_community.docstore.in_memory import InMemoryDocstore
 import faiss
+import torch
 import os
 
 device = 'cpu'
 print(f"Using device: {device}")
 
 embeddings = HuggingFaceEmbeddings(
-    model_name="gval0/NLP-Final-Georgian-Text-Embeddings-Fine-Tuned",
+    model_name="intfloat/multilingual-e5-small",
     model_kwargs={'device': device},
     encode_kwargs={'normalize_embeddings': True}
 )
 
 FAISS_INDEX_PATH = "faiss_index"
+
 
 def preprocess_and_save_faiss(file_path="georgian-civil-code.pdf", is_pdf=True):
     if os.path.exists(FAISS_INDEX_PATH):
