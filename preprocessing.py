@@ -11,7 +11,7 @@ device = 'cpu'
 print(f"Using device: {device}")
 
 embeddings = HuggingFaceEmbeddings(
-    model_name="intfloat/multilingual-e5-small",
+    model_name="gval0/NLP-Final-Georgian-Text-Embeddings-Fine-Tuned",
     model_kwargs={'device': device},
     encode_kwargs={'normalize_embeddings': True}
 )
@@ -61,4 +61,4 @@ def preprocess_and_save_faiss(file_path="georgian-civil-code.pdf", is_pdf=True):
     print(f"FAISS index saved to {FAISS_INDEX_PATH}")
 
 
-    preprocess_and_save_faiss("georgian-civil-code.pdf")
+preprocess_and_save_faiss("georgian-civil-code.pdf")
